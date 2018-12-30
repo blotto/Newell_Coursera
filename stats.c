@@ -33,7 +33,7 @@
 
 #define SIZE (40) /* Size of the Data Set */
 
-int main() {
+int main(void) {
 
     unsigned char test[SIZE] = { 34, 201, 190, 154,   8, 194,   2,   6,
                                  114, 88,   45,  76, 123,  87,  25,  23,
@@ -42,7 +42,8 @@ int main() {
                                  7,  87, 250, 230,  99,   3, 100,  90};
 
     /* Other Variable Declarations Go Here */
-    int minumum, maximum, median, mean = 0;
+    unsigned char minumum, maximum;
+    float median, mean = 0;
 
     /* Statistics and Printing Functions Go Here */
     sort_array(test, SIZE);
@@ -55,51 +56,50 @@ int main() {
     print_array(test, SIZE);
     print_statistics(minumum, maximum, median, mean);
 
-    return 0;
 }
 
 /****
  Add other Implementation File Code Here
 */
 void print_statistics(unsigned char min, unsigned char max, float med , float mean) {
-    printf("Minimum : %d\n", min);
-    printf("Maximum : %d\n", max);
-    printf("Medium : %.1f\n", med);
-    printf("Mean : %.1f\n", mean);
+    printf("Min:\t %u\n", min);
+    printf("Max:\t %u\n", max);
+    printf("Median:\t %.1f\n", med);
+    printf("Mean:\t %.2f\n", mean);
 }
-unsigned char find_minimum(unsigned char  * ptr, int count) {
+unsigned char find_minimum(unsigned char  * ptr, unsigned int count) {
     return ptr[count-1];
 }
 
-unsigned char find_maximum(unsigned char  * ptr, int count) {
+unsigned char find_maximum(unsigned char  * ptr, unsigned int count) {
     return ptr[0];
 }
 
-float find_median(unsigned char  * ptr, int count) {
+float find_median(unsigned char  * ptr, unsigned int count) {
 
     if(count%2==0) {
         // an even sized array, average middle two elements
-        return((ptr[count/2] + ptr[count/2 - 1]) / 2.0);
+        return((ptr[count/2 - 1] + ptr[count/2]) / 2.0);
     } else {
         // an odd sized array, simply return element directly in the middle
-        return ptr[count/2];
+        return ptr[(count-1)/2];
     }
 
 }
 
-float find_mean(unsigned char  * ptr, int count) {
+float find_mean(unsigned char  * ptr, unsigned int count) {
     int i;
-    int sum = 0;
+    float sum = 0;
 
     for(i = 0; i < count; i++) {
         sum += *ptr;
         ptr++;
     }
 
-    return (sum/count);
+    return (sum / count);
 }
 
-void print_array(unsigned char  * ptr, int count) {
+void print_array(unsigned char  * ptr, unsigned int count) {
     int i;
 
     if (count <= 0) {
@@ -117,7 +117,7 @@ void print_array(unsigned char  * ptr, int count) {
     printf(" }\n");
 }
 
-void sort_array(unsigned char * ptr, int count) {
+void sort_array(unsigned char * ptr, unsigned int count) {
     int i, j;
     int temp;
     if ( count <= 0 ) {

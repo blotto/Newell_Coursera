@@ -46,7 +46,7 @@ void print_statistics(unsigned char min, unsigned char max, float med , float me
  *
  * @return none
  */
-void print_array(unsigned char * ptr, int count);
+void print_array(unsigned char * ptr, unsigned int count);
 
 /**
  * @brief find median
@@ -58,7 +58,7 @@ void print_array(unsigned char * ptr, int count);
  *
  * @return median of data in array
  */
-float find_median(unsigned char  * ptr, int count);
+float find_median(unsigned char  * ptr, unsigned int count);
 
 /**
  * @brief find mean
@@ -70,7 +70,7 @@ float find_median(unsigned char  * ptr, int count);
  *
  * @return mean of data in array
  */
-float find_mean(unsigned char  * ptr, int count);
+float find_mean(unsigned char  * ptr, unsigned int count);
 
 /**
  * @brief find maximum
@@ -82,7 +82,7 @@ float find_mean(unsigned char  * ptr, int count);
  *
  * @return  maximum of data in array
  */
-unsigned char find_maximum(unsigned char  * ptr, int count);
+unsigned char find_maximum(unsigned char  * ptr, unsigned int count);
 
 /**
  * @brief find minimum
@@ -94,7 +94,7 @@ unsigned char find_maximum(unsigned char  * ptr, int count);
  *
  * @return minimum of data in array
  */
-unsigned char find_minimum(unsigned char  * ptr, int count);
+unsigned char find_minimum(unsigned char  * ptr, unsigned int count);
 
 /**
  * @brief sorts array from largest to smallest
@@ -107,6 +107,6 @@ unsigned char find_minimum(unsigned char  * ptr, int count);
  *
  * @return none
  */
-void sort_array(unsigned char  * ptr, int count);
+void sort_array(unsigned char  * ptr, unsigned int count);
 
 #endif /* __STATS_H__ */
