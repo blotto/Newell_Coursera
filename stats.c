@@ -62,28 +62,75 @@ int main() {
  Add other Implementation File Code Here
 */
 void print_statistics(unsigned char min, unsigned char max, float med , float mean) {
-    //
+    printf("Minimum : %d\n", min);
+    printf("Maximum : %d\n", max);
+    printf("Medium : %.1f\n", med);
+    printf("Mean : %.1f\n", mean);
 }
 unsigned char find_minimum(unsigned char  * ptr, int count) {
-    //
+    return ptr[count-1];
 }
 
 unsigned char find_maximum(unsigned char  * ptr, int count) {
-    //
+    return ptr[0];
 }
 
 float find_median(unsigned char  * ptr, int count) {
-    //
+
+    if(count%2==0) {
+        // an even sized array, average middle two elements
+        return((ptr[count/2] + ptr[count/2 - 1]) / 2.0);
+    } else {
+        // an odd sized array, simply return element directly in the middle
+        return ptr[count/2];
+    }
+
 }
 
 float find_mean(unsigned char  * ptr, int count) {
-    //
+    int i;
+    int sum = 0;
+
+    for(i = 0; i < count; i++) {
+        sum += *ptr;
+        ptr++;
+    }
+
+    return (sum/count);
 }
 
 void print_array(unsigned char  * ptr, int count) {
-    //
+    int i;
+
+    if (count <= 0) {
+        printf("No valid array size provided. Unable to print array.");
+        return;
+    }
+
+    printf("{ ");
+    for(i = 0; i < count; i++) {
+        printf("%d", ptr[i]);
+        if ( i < count - 1) {
+            printf(", ");
+        }
+    }
+    printf(" }\n");
 }
 
 void sort_array(unsigned char * ptr, int count) {
-    //
+    int i, j;
+    int temp;
+    if ( count <= 0 ) {
+        count = 1;
+    }
+
+    for (i=0; i<count-1; i++) {
+        for (j=i+1; j<count; j++) {
+            if (ptr[j] > ptr[i]) {
+                temp = ptr[i];
+                ptr[i] = ptr[j];
+                ptr[j] = temp;
+            }
+        }
+    }
 }
